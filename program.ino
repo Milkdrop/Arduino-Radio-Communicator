@@ -3,6 +3,7 @@
 #include <RH_ASK.h>
 #include <SPI.h>
 
+//par FS
 RH_ASK transmitter;
 RH_ASK receiver;
 bool Transmit = false;
@@ -192,6 +193,11 @@ void loop() {
               tempbuf[i] = buf[i];
               tempbuf[i+1] = '\0';
             }
+            
+            for (int i = buflen; i < 40; i++) {
+              tempbuf[i] = ' ';
+            }
+            tempbuf[40] = '\0';
             lcd.print((char*) tempbuf);
         }
     }
